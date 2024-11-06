@@ -1,6 +1,6 @@
 /******************************************************************
  *
- *   YOUR NAME / SECTION NUMBER
+ *   Mimi Sipes / COMP 272-002
  *
  *   This java file contains the problem solutions of isSubSet, findKthLargest,
  *   and sort2Arrays methods. You should utilize the Java Collection Framework for
@@ -29,12 +29,20 @@ class ProblemSolutions {
      * @param list2 - input array B
      * @return      - returns boolean value B is a subset of A.
      */
-
+    //PASSED
     public boolean isSubset(int list1[], int list2[]) {
+        HashSet<Integer> elements = new HashSet<>();
 
-        // ADD YOU CODE HERE -- DON'T FORGET TO ADD YOR NAME AT TOP OF FILE
+        for (int num : list1) {
+            elements.add(num);
+        }
 
-        return false;
+        for (int num : list2) {
+            if (!elements.contains(num)) {
+                return false;
+            }
+        }
+        return true;
     }
 
 
@@ -50,14 +58,20 @@ class ProblemSolutions {
      * @param k     - the kth maximum element
      * @return      - the value in the array which is the kth maximum value
      */
-
+    //PASSED
     public int findKthLargest(int[] array, int k) {
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>(k);
 
-        // ADD YOUR CODE HERE
-
-        return 0;
+        for (int num : array) {
+            if (minHeap.size() < k) {
+                minHeap.add(num);
+            } else if (num > minHeap.peek()) {
+                minHeap.poll();
+                minHeap.add(num);
+            }
+        }
+        return minHeap.peek();
     }
-
 
     /**
      * Method: sort2Arrays
@@ -71,12 +85,22 @@ class ProblemSolutions {
      * @param array2    - Input array 2
      * @return          - Sorted array with all elements in A and B.
      */
-
+    //PASSED
     public int[] sort2Arrays(int[] array1, int[] array2) {
+        int[] result = new int[array1.length + array2.length];
+        int k = 0;
 
-        // ADD YOU CODE HERE
+        for (int i = 0; i < array1.length; i++) {
+            result[i] = array1[i];
+        }
 
-        return null;
+        for (int j = array1.length; j < (array1.length + array2.length);j++){
+            result[j] = array2[k];
+            k++;
+        }
+
+        Arrays.sort(result);
+        return result;
     }
 
 }
