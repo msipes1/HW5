@@ -1,6 +1,6 @@
 /******************************************************************
  *
- *   YOUR NAME / SECTION NUMBER
+ *   Mimi Sipes / COMP 272-002
  *
  *   Note, additional comments provided throughout this source code
  *   is for educational purposes
@@ -150,7 +150,7 @@ public class CuckooHash<K, V> {
 	 */
 
 	public List<V> values() {
-		List<V> allValues = new ArrayList<V>(); 
+		List<V> allValues = new ArrayList<V>();
 		for (int i=0; i<CAPACITY; ++i) {
 			if (table[i] != null) {
 				allValues.add(table[i].getValue());
@@ -243,14 +243,38 @@ public class CuckooHash<K, V> {
 	 * @param key the key of the element to add
      * @param value the value of the element to add
 	 */
-
+	//FIX
+	//Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
  	public void put(K key, V value) {
-
-		// ADD YOUR CODE HERE - DO NOT FORGET TO ADD YOUR NAME AT TOP OF FILE.
-		// Also make sure you read this method's prologue above, it should help
-		// you. Especially the two HINTS in the prologue.
-
-		return;
+//		Bucket<K, V> newBucket = new Bucket<>(key, value);
+//
+//		for (int i = 0; i < CAPACITY; i++) {
+//			int index1 = hash1(newBucket.getBucKey());
+//
+//			if (table[index1] == null) {
+//				table[index1] = newBucket;
+//				return;
+//			}
+//
+//			Bucket<K, V> kickedOutBucket = table[index1];
+//			table[index1] = newBucket;
+//			newBucket = kickedOutBucket;
+//
+//			int index2 = hash2(newBucket.getBucKey());
+//
+//			if (table[index2] == null) {
+//				table[index2] = newBucket;
+//				return;
+//			}
+//
+//			kickedOutBucket = table[index2];
+//			table[index2] = newBucket;
+//			newBucket = kickedOutBucket;
+//		}
+//
+//		rehash();
+//
+//		put(newBucket.getBucKey(), newBucket.getValue());
 	}
 
 
